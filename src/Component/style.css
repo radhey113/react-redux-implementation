@@ -1,0 +1,23 @@
+.mapStyle{
+   width: 100%;
+   top: 10px;
+   padding: 20px;
+   position: relative;
+   font-size: 28px;
+   font-weight: bold;
+   /* color: #6d285c; */
+   background: -webkit-linear-gradient(rgb(228, 222, 138), rgb(107, 39, 39));
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+
+   max-height: 55vh;
+   min-height: 60vh;
+   text-align: center;
+}
+
+.mapStyle > *, .mapStyle div { 
+    max-height: 55vh !important;
+}
+/* .mapStyle div{
+    max-height: 75vh;
+} */
