@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { getLocation } from '../Actions/GetAction'; 
+import { bindActionCreators } from 'redux';
+import { getData } from '../Actions/GetAction';
 import './style.css';
 
 class MapDashboard extends React.Component {
@@ -13,10 +14,16 @@ class MapDashboard extends React.Component {
 
         /** Current state **/ 
         this.state = {
-           activeAddress: '',
-           allAddress: [],
-           searchValue: ''
-        }
+            demoName: ''
+        };
+        this.getCurrentStateValue.bind(this);
+        this.getCurrentStateValue();
+    }
+
+
+    getCurrentStateValue(){
+        let check =  () => this.props.getData();
+        console.log(`Check : ${check}`);
     }
 
     /** Submit location to state **/ 
@@ -25,21 +32,19 @@ class MapDashboard extends React.Component {
         return (
             <div className="mapStyle">
                 <div className="mapStyle">
-                    This is an example of React-Redux
+                    This is an example of {this.state.demoName}.
                 </div>
             </div>
         )
     }
 }
 
-const mapStateToProps = state => {
-    return ({
-        activeAddress: state.activeAddress
-    })
-}
+const matchDispatchToProps = dispatch => {
+    return bindActionCreators({ getData: getData }, dispatch);
+};
 
 
 // export default MapDashboard
-export default connect(mapStateToProps, { getLocation })(MapDashboard);
+export default connect( matchDispatchToProps )(MapDashboard);
 
 
